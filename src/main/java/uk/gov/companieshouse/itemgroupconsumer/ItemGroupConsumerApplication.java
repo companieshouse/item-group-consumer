@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ItemGroupConsumerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ItemGroupConsumerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ItemGroupConsumerApplication.class, args);
+    }
 
 }
