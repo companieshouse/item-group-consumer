@@ -19,9 +19,8 @@
         <maven.compiler.target>11</maven.compiler.target>
         <start-class>uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication</start-class>
         <spring-boot-maven-plugin.version>2.5.5</spring-boot-maven-plugin.version>
-        <!-- TODO DCAC-113 Check versions -->
-        <log4j.version>2.17.1</log4j.version>
-        <structured-logging.version>1.9.13</structured-logging.version>
+        <log4j.version>2.19.0</log4j.version>
+        <structured-logging.version>1.9.15</structured-logging.version>
 
         <!-- Docker -->
         <jib-maven-plugin.version>3.3.1</jib-maven-plugin.version>
