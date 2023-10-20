@@ -1,5 +1,7 @@
 package uk.gov.companieshouse.itemgroupconsumer;
 
+import uk.gov.companieshouse.itemgroupordered.ItemGroupOrdered;
+
 import java.util.Objects;
 
 /**
@@ -7,18 +9,18 @@ import java.util.Objects;
  */
 public class ServiceParameters {
 
-    private final String data;
+    private final ItemGroupOrdered data;
 
-    public ServiceParameters(String data) {
+    public ServiceParameters(ItemGroupOrdered data) {
         this.data = data;
     }
 
     /**
      * Get data attached to the ServiceParameters object.
      *
-     * @return A string representing data that has been attached to the ServiceParameters object.
+     * @return An {@link ItemGroupOrdered} representing data that has been attached to the ServiceParameters object.
      */
-    public String getData() {
+    public ItemGroupOrdered getData() {
         return data;
     }
 
