@@ -19,11 +19,12 @@ class ItemGroupWorkflowService implements Service {
 
     @Override
     public void processMessage(ServiceParameters parameters) {
-        final String orderId = parameters.getData().getOrderId();
-        final String itemId = parameters.getData().getItems().get(0).getId();
+        final var message = parameters.getData();
+        final var orderId = message.getOrderId();
+        final var itemId = message.getItems().get(0).getId();
 
-        LOGGER.info("Processing message for order ID " + orderId + ", item ID = " + itemId + ".",
-            getLogMap(orderId, itemId));
+        LOGGER.info("Processing message " + message + " for order ID " + orderId +
+                ", item ID = " + itemId + ".", getLogMap(orderId, itemId));
 
         // TODO DCAC-46 Implement this.
     }
