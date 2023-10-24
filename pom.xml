@@ -20,9 +20,10 @@
         <start-class>uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication</start-class>
         <spring-boot-maven-plugin.version>2.5.5</spring-boot-maven-plugin.version>
         <structured-logging.version>1.9.25</structured-logging.version>
+
         <!-- Docker -->
         <jib-maven-plugin.version>3.3.1</jib-maven-plugin.version>
-        
+
     </properties>
 
     <dependencyManagement>
