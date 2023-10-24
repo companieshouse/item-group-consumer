@@ -39,7 +39,7 @@ class InvalidMessageRouterTest {
         ProducerRecord<String, ItemGroupOrdered> actual = invalidMessageRouter.onSend(message);
 
         // then
-        assertThat(actual, is(equalTo(new ProducerRecord<>("invalid", "key", "value"))));
+        assertThat(actual, is(equalTo(new ProducerRecord<>("invalid", "key", ITEM_GROUP_ORDERED))));
     }
 
     @Test
