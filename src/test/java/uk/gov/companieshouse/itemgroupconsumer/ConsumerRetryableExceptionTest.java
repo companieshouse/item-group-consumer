@@ -63,9 +63,9 @@ class ConsumerRetryableExceptionTest extends AbstractKafkaIntegrationTest {
 
         //then
         assertThat(TestUtils.noOfRecordsForTopic(consumerRecords, MAIN_TOPIC)).isEqualTo(1);
-        assertThat(TestUtils.noOfRecordsForTopic(consumerRecords, RETRY_TOPIC)).isEqualTo(4);
+        assertThat(TestUtils.noOfRecordsForTopic(consumerRecords, RETRY_TOPIC)).isEqualTo(3);
         assertThat(TestUtils.noOfRecordsForTopic(consumerRecords, ERROR_TOPIC)).isEqualTo(1);
         assertThat(TestUtils.noOfRecordsForTopic(consumerRecords, INVALID_TOPIC)).isZero();
-        verify(service, times(5)).processMessage(new ServiceParameters(ITEM_GROUP_ORDERED));
+        verify(service, times(4)).processMessage(new ServiceParameters(ITEM_GROUP_ORDERED));
     }
 }
