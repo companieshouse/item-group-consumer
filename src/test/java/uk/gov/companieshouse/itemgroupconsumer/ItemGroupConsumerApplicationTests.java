@@ -9,7 +9,7 @@ import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test_main_positive.properties")
-@Import(TestKafkaConfig.class)
+@Import(TestConfig.class)
 @ActiveProfiles("test_main_positive")
 class ItemGroupConsumerApplicationTests {
 
