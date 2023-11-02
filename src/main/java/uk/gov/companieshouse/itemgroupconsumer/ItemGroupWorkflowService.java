@@ -24,7 +24,7 @@ class ItemGroupWorkflowService implements Service {
         final var itemId = message.getItems().get(0).getId();
 
         LOGGER.info("Processing message " + message + " for order ID " + orderId +
-                ", item ID = " + itemId + ".", getLogMap(orderId, itemId));
+                ", item ID " + itemId + ".", getLogMap(orderId, itemId));
 
         // TODO DCAC-46 Implement this.
     }
