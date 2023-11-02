@@ -1,11 +1,8 @@
 package uk.gov.companieshouse.itemgroupconsumer;
 
-import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.NAMESPACE;
-
 import java.util.Map;
 import org.springframework.stereotype.Component;
 import uk.gov.companieshouse.logging.Logger;
-import uk.gov.companieshouse.logging.LoggerFactory;
 import uk.gov.companieshouse.logging.util.DataMap;
 
 /**
@@ -15,7 +12,11 @@ import uk.gov.companieshouse.logging.util.DataMap;
 @Component
 class ItemGroupWorkflowService implements Service {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NAMESPACE);
+    private final Logger logger;
+
+    ItemGroupWorkflowService(Logger logger) {
+        this.logger = logger;
+    }
 
     @Override
     public void processMessage(ServiceParameters parameters) {
@@ -23,7 +24,7 @@ class ItemGroupWorkflowService implements Service {
         final var orderId = message.getOrderId();
         final var itemId = message.getItems().get(0).getId();
 
-        LOGGER.info("Processing message " + message + " for order ID " + orderId +
+        logger.info("Processing message " + message + " for order ID " + orderId +
                 ", item ID " + itemId + ".", getLogMap(orderId, itemId));
 
         // TODO DCAC-46 Implement this.

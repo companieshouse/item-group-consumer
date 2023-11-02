@@ -1,7 +1,5 @@
 package uk.gov.companieshouse.itemgroupconsumer;
 
-import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.NAMESPACE;
-
 import java.util.Optional;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -12,7 +10,6 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 import uk.gov.companieshouse.logging.Logger;
-import uk.gov.companieshouse.logging.LoggerFactory;
 import uk.gov.companieshouse.logging.util.DataMap;
 
 /**
@@ -31,11 +28,15 @@ import uk.gov.companieshouse.logging.util.DataMap;
 @Aspect
 public class MessageLoggingAspect {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NAMESPACE);
-
     private static final String LOG_MESSAGE_RECEIVED = "Processing kafka message";
     private static final String LOG_MESSAGE_PROCESSED = "Processed kafka message";
     private static final String EXCEPTION_MESSAGE = "%s exception thrown: %s";
+
+    private final Logger logger;
+
+    public MessageLoggingAspect(Logger logger) {
+        this.logger = logger;
+    }
 
     @Before("execution(* Consumer.consume(..))")
     void logBeforeMainConsumer(JoinPoint joinPoint) {
@@ -66,6 +67,6 @@ public class MessageLoggingAspect {
             .kafkaMessage(incomingMessage.getPayload().toString())
             .build()
             .getLogMap();
-        LOGGER.debug(logMessage, dataMap);
+        logger.debug(logMessage, dataMap);
     }
 }
