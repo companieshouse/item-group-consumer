@@ -83,14 +83,17 @@ public class Config {
     }
 
     @Bean
-    public KafkaTemplate<String, ItemGroupOrdered> kafkaTemplate(ProducerFactory<String, ItemGroupOrdered> producerFactory) {
+    public KafkaTemplate<String, ItemGroupOrdered>
+    kafkaTemplate(ProducerFactory<String, ItemGroupOrdered> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, ItemGroupOrdered> kafkaListenerContainerFactory(ConsumerFactory<String, ItemGroupOrdered> consumerFactory,
-                                                                                                 @Value("${consumer.concurrency}") Integer concurrency) {
-        ConcurrentKafkaListenerContainerFactory<String, ItemGroupOrdered> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, ItemGroupOrdered>
+    kafkaListenerContainerFactory(ConsumerFactory<String, ItemGroupOrdered> consumerFactory,
+                                  @Value("${consumer.concurrency}") Integer concurrency) {
+        ConcurrentKafkaListenerContainerFactory<String, ItemGroupOrdered> factory =
+            new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         factory.setConcurrency(concurrency);
         factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.RECORD);

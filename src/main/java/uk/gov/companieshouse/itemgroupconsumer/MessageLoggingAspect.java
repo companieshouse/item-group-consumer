@@ -13,8 +13,8 @@ import uk.gov.companieshouse.logging.Logger;
 import uk.gov.companieshouse.logging.util.DataMap;
 
 /**
- * Logs message details before and after it has been processed by
- * the {@link Consumer main consumer}.<br>
+ * Logs message details before and after it has been processed by the
+ * {@link Consumer main consumer}.<br>
  * <br>
  * Details that will be logged will include:
  * <ul>
@@ -40,26 +40,31 @@ public class MessageLoggingAspect {
 
     @Before("execution(* Consumer.consume(..))")
     void logBeforeMainConsumer(JoinPoint joinPoint) {
-        logMessage(LOG_MESSAGE_RECEIVED, (Message<?>)joinPoint.getArgs()[0]);
+        logMessage(LOG_MESSAGE_RECEIVED, (Message<?>) joinPoint.getArgs()[0]);
     }
 
     @After("execution(* Consumer.consume(..))")
     void logAfterMainConsumer(JoinPoint joinPoint) {
-        logMessage(LOG_MESSAGE_PROCESSED, (Message<?>)joinPoint.getArgs()[0]);
+        logMessage(LOG_MESSAGE_PROCESSED, (Message<?>) joinPoint.getArgs()[0]);
     }
 
     @AfterThrowing(pointcut = "execution(* Consumer.consume(..))", throwing = "error")
     public void afterThrowingAdvice(JoinPoint joinPoint, Throwable error) {
-        logMessage(String.format(EXCEPTION_MESSAGE, error.getClass().getSimpleName(), error.getMessage()), (Message<?>) joinPoint.getArgs()[0]);
+        logMessage(
+            String.format(EXCEPTION_MESSAGE, error.getClass().getSimpleName(), error.getMessage()),
+            (Message<?>) joinPoint.getArgs()[0]);
     }
 
     private void logMessage(String logMessage, Message<?> incomingMessage) {
-        var topic = Optional.ofNullable((String) incomingMessage.getHeaders().get(KafkaHeaders.RECEIVED_TOPIC))
-                .orElse("no topic");
-        var partition = Optional.ofNullable((Integer) incomingMessage.getHeaders().get(KafkaHeaders.RECEIVED_PARTITION_ID))
-                .orElse(0);
-        var offset = Optional.ofNullable((Long) incomingMessage.getHeaders().get(KafkaHeaders.OFFSET))
-                .orElse(0L);
+        var topic = Optional.ofNullable(
+                (String) incomingMessage.getHeaders().get(KafkaHeaders.RECEIVED_TOPIC))
+            .orElse("no topic");
+        var partition = Optional.ofNullable(
+                (Integer) incomingMessage.getHeaders().get(KafkaHeaders.RECEIVED_PARTITION_ID))
+            .orElse(0);
+        var offset = Optional.ofNullable(
+                (Long) incomingMessage.getHeaders().get(KafkaHeaders.OFFSET))
+            .orElse(0L);
         var dataMap = new DataMap.Builder()
             .topic(topic)
             .partition(partition)

@@ -12,34 +12,34 @@ import uk.gov.companieshouse.itemgroupordered.ItemGroupOrdered;
  */
 public class InvalidMessageRouter implements ProducerInterceptor<String, ItemGroupOrdered> {
 
-  private MessageFlags messageFlags;
-  private String invalidMessageTopic;
+    private MessageFlags messageFlags;
+    private String invalidMessageTopic;
 
-  @Override
-  public ProducerRecord<String, ItemGroupOrdered>
-  onSend(ProducerRecord<String, ItemGroupOrdered> producerRecord) {
-    if (messageFlags.isRetryable()) {
-      messageFlags.destroy();
-      return producerRecord;
-    } else {
-      return new ProducerRecord<>(this.invalidMessageTopic, producerRecord.key(),
-          producerRecord.value());
+    @Override
+    public ProducerRecord<String, ItemGroupOrdered>
+    onSend(ProducerRecord<String, ItemGroupOrdered> producerRecord) {
+        if (messageFlags.isRetryable()) {
+            messageFlags.destroy();
+            return producerRecord;
+        } else {
+            return new ProducerRecord<>(this.invalidMessageTopic, producerRecord.key(),
+                producerRecord.value());
+        }
     }
-  }
 
-  @Override
-  public void onAcknowledgement(RecordMetadata metadata, Exception exception) {
-    // Method must be implemented, but no intervention is required here.
-  }
+    @Override
+    public void onAcknowledgement(RecordMetadata metadata, Exception exception) {
+        // Method must be implemented, but no intervention is required here.
+    }
 
-  @Override
-  public void close() {
-    // Method must be implemented, but no intervention is required here.
-  }
+    @Override
+    public void close() {
+        // Method must be implemented, but no intervention is required here.
+    }
 
-  @Override
-  public void configure(Map<String, ?> configs) {
-    this.messageFlags = (MessageFlags) configs.get("message.flags");
-    this.invalidMessageTopic = (String) configs.get("invalid.message.topic");
-  }
+    @Override
+    public void configure(Map<String, ?> configs) {
+        this.messageFlags = (MessageFlags) configs.get("message.flags");
+        this.invalidMessageTopic = (String) configs.get("invalid.message.topic");
+    }
 }
