@@ -1,5 +1,6 @@
 package uk.gov.companieshouse.itemgroupconsumer;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import uk.gov.companieshouse.api.error.ApiErrorResponseException;
 import uk.gov.companieshouse.api.model.ApiResponse;
@@ -23,13 +24,21 @@ public class ItemGroupWorkflowRequest {
 
     public void sendItemGroup(ItemGroupWorkflowApi itemGroupWorkflowApi) {
         try{
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.findAndRegisterModules();
+            logger.info("sending over: " + itemGroupWorkflowApi);
+            try {
+                logger.info(mapper.writeValueAsString(itemGroupWorkflowApi));
+            }catch (Exception ex) {
+                logger.error("uh oh! : " + ex.getMessage());
+            }
             ApiResponse<Void> response = apiClientService
                     .getInternalApiClient()
                     .privateItemGroupWorkflowResourceHandler()
                     .postItemGroupWorkflow("/item-groups", itemGroupWorkflowApi)
                     .execute();
         } catch (ApiErrorResponseException ex){
-            logger.error("ApiErrorResponseException: " + ex.getMessage());
+            logger.error("ApiErrorResponseException: " + ex.getMessage() + ex.getContent());
         }
     }
 }

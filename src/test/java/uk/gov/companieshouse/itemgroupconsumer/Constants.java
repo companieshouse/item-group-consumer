@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
+import uk.gov.companieshouse.itemgroupordered.DeliveryDetails;
 import uk.gov.companieshouse.itemgroupordered.Item;
 import uk.gov.companieshouse.itemgroupordered.ItemCosts;
 import uk.gov.companieshouse.itemgroupordered.ItemGroupOrdered;
@@ -29,9 +30,22 @@ public class Constants {
       .setReference("ORD-710716-964943")
       .setTotalOrderCost("30")
       .setItems(createItems())
+      .setDeliveryDetails(createDeliveryDetails())
       .setLinks(new OrderLinks("/orders/ORD-710716-964943"))
       .build();
 
+  private static DeliveryDetails createDeliveryDetails(){
+    return DeliveryDetails.newBuilder()
+            .setAddressLine1("123 street")
+            .setAddressLine2("")
+            .setCountry("UK")
+            .setPostalCode("PL1 2EF")
+            .setForename("Tom")
+            .setSurname("Sunburn")
+            .setLocality("Local")
+            .setPoBox("")
+            .build();
+  }
   private static List<Item> createItems() {
     return singletonList(new Item(
         "CERTIFIED DOCUMENTS TEST COMPANY LIMITED",
