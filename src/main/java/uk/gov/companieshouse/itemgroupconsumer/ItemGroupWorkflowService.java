@@ -1,11 +1,11 @@
-package uk.gov.companieshouse.itemgroupconsumer.itemgroup;
+package uk.gov.companieshouse.itemgroupconsumer;
 
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
 import uk.gov.companieshouse.api.model.itemgroup.ItemGroupApi;
-import uk.gov.companieshouse.itemgroupconsumer.Service;
-import uk.gov.companieshouse.itemgroupconsumer.ServiceParameters;
+import uk.gov.companieshouse.itemgroupconsumer.itemgroup.ItemGroupMessageMapper;
+import uk.gov.companieshouse.itemgroupconsumer.itemgroup.ItemGroupRequest;
 import uk.gov.companieshouse.logging.Logger;
 import uk.gov.companieshouse.logging.util.DataMap;
 
@@ -14,12 +14,12 @@ import uk.gov.companieshouse.logging.util.DataMap;
  * Item Group Workflow API.
  */
 @Component
-class ItemGroupService implements Service {
+class ItemGroupWorkflowService implements Service {
 
     private final Logger logger;
     private final ItemGroupRequest itemGroupRequest;
 
-    ItemGroupService(Logger logger, ItemGroupRequest itemGroupRequest) {
+    ItemGroupWorkflowService(Logger logger, ItemGroupRequest itemGroupRequest) {
         this.logger = logger;
         this.itemGroupRequest = itemGroupRequest;
     }
