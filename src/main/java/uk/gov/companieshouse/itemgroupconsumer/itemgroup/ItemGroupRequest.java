@@ -1,10 +1,11 @@
-package uk.gov.companieshouse.itemgroupconsumer;
+package uk.gov.companieshouse.itemgroupconsumer.itemgroup;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import uk.gov.companieshouse.api.error.ApiErrorResponseException;
 import uk.gov.companieshouse.api.model.ApiResponse;
-import uk.gov.companieshouse.api.model.itemgroupworkflow.ItemGroupWorkflowApi;
+import uk.gov.companieshouse.api.model.itemgroup.ItemGroupApi;
+import uk.gov.companieshouse.itemgroupconsumer.ApiClientService;
 import uk.gov.companieshouse.logging.Logger;
 
 /**
@@ -12,17 +13,17 @@ import uk.gov.companieshouse.logging.Logger;
  * and then send that via a HTTP request to item-group-workflow-api
  */
 @Service
-public class ItemGroupWorkflowRequest {
+public class ItemGroupRequest {
     private final Logger logger;
     private final ApiClientService apiClientService;
 
-    public ItemGroupWorkflowRequest(ApiClientService apiClientService, Logger logger){
+    public ItemGroupRequest(ApiClientService apiClientService, Logger logger){
         this.logger = logger;
         this.apiClientService = apiClientService;
     }
 
 
-    public void sendItemGroup(ItemGroupWorkflowApi itemGroupWorkflowApi) {
+    public void sendItemGroup(ItemGroupApi itemGroupWorkflowApi) {
         try{
             ObjectMapper mapper = new ObjectMapper();
             mapper.findAndRegisterModules();
@@ -34,8 +35,8 @@ public class ItemGroupWorkflowRequest {
             }
             ApiResponse<Void> response = apiClientService
                     .getInternalApiClient()
-                    .privateItemGroupWorkflowResourceHandler()
-                    .postItemGroupWorkflow("/item-groups", itemGroupWorkflowApi)
+                    .privateItemGroupResourceHandler()
+                    .postItemGroup("/item-groups", itemGroupWorkflowApi)
                     .execute();
         } catch (ApiErrorResponseException ex){
             logger.error("ApiErrorResponseException: " + ex.getMessage() + ex.getContent());

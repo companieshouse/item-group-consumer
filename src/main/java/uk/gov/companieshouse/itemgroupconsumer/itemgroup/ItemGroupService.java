@@ -1,9 +1,11 @@
-package uk.gov.companieshouse.itemgroupconsumer;
+package uk.gov.companieshouse.itemgroupconsumer.itemgroup;
 
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
-import uk.gov.companieshouse.api.model.itemgroupworkflow.ItemGroupWorkflowApi;
+import uk.gov.companieshouse.api.model.itemgroup.ItemGroupApi;
+import uk.gov.companieshouse.itemgroupconsumer.Service;
+import uk.gov.companieshouse.itemgroupconsumer.ServiceParameters;
 import uk.gov.companieshouse.logging.Logger;
 import uk.gov.companieshouse.logging.util.DataMap;
 
@@ -12,14 +14,14 @@ import uk.gov.companieshouse.logging.util.DataMap;
  * Item Group Workflow API.
  */
 @Component
-class ItemGroupWorkflowService implements Service {
+class ItemGroupService implements Service {
 
     private final Logger logger;
-    private final ItemGroupWorkflowRequest itemGroupWorkflowRequest;
+    private final ItemGroupRequest itemGroupRequest;
 
-    ItemGroupWorkflowService(Logger logger, ItemGroupWorkflowRequest itemGroupWorkflowRequest) {
+    ItemGroupService(Logger logger, ItemGroupRequest itemGroupRequest) {
         this.logger = logger;
-        this.itemGroupWorkflowRequest = itemGroupWorkflowRequest;
+        this.itemGroupRequest = itemGroupRequest;
     }
 
     @Override
@@ -32,12 +34,8 @@ class ItemGroupWorkflowService implements Service {
                 ", item ID " + itemId + ".", getLogMap(orderId, itemId));
 
         try{
-            ItemGroupWorkflowApi itemGroupWorkflowApi = ItemGroupMessageMapper.createPayload(message);
-
-            logger.info("Converted message: " + itemGroupWorkflowApi.getItems().get(0).getItemOptions().toString());
-
-            //consume the message
-            itemGroupWorkflowRequest.sendItemGroup(itemGroupWorkflowApi);
+            ItemGroupApi itemGroupApi = ItemGroupMessageMapper.createPayload(message);
+            itemGroupRequest.sendItemGroup(itemGroupApi);
         }catch (Exception ex){
             logger.error("error:" + ex.getMessage(), ex);
         }
