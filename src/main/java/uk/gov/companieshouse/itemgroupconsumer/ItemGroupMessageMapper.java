@@ -1,4 +1,4 @@
-package uk.gov.companieshouse.itemgroupconsumer.itemgroup;
+package uk.gov.companieshouse.itemgroupconsumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import uk.gov.companieshouse.api.model.itemgroup.DeliveryDetailsApi;

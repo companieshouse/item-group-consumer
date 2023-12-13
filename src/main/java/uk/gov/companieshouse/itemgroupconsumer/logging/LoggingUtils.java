@@ -1,5 +1,6 @@
 package uk.gov.companieshouse.itemgroupconsumer.logging;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
 import uk.gov.companieshouse.logging.Logger;
 
 import java.util.HashMap;
@@ -21,6 +22,11 @@ public class LoggingUtils {
         if (loggingObject != null) {
             logMap.put(key, loggingObject);
         }
+    }
+
+    public static  Throwable getRootCause(final Exception exception) {
+        final var rootCause = ExceptionUtils.getRootCause(exception);
+        return rootCause != null ? rootCause : exception;
     }
 
     public Logger getLogger() {
