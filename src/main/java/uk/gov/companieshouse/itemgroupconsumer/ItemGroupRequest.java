@@ -1,5 +1,6 @@
 package uk.gov.companieshouse.itemgroupconsumer;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import uk.gov.companieshouse.api.error.ApiErrorResponseException;
 import uk.gov.companieshouse.api.model.ApiResponse;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class ItemGroupRequest {
     private final Logger logger;
     private final ApiClientService apiClientService;
+    public static final String itemGroupURI = "/item-groups";
 
     public ItemGroupRequest(ApiClientService apiClientService, Logger logger){
         this.logger = logger;
@@ -27,7 +29,7 @@ public class ItemGroupRequest {
         ApiResponse<Void> response = apiClientService
                 .getInternalApiClient()
                 .privateItemGroupResourceHandler()
-                .postItemGroup("/item-groups", itemGroupWorkflowApi)
+                .postItemGroup(itemGroupURI, itemGroupWorkflowApi)
                 .execute();
     }
 }
