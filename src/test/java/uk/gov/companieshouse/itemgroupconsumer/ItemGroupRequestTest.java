@@ -55,9 +55,6 @@ public class ItemGroupRequestTest {
 
         itemGroupRequest.sendItemGroup(itemGroupApi);
 
-        //TODO: remap the uri value in the postItemGroup to env var
-
-
         verify(apiClientService.getInternalApiClient().privateItemGroupResourceHandler().postItemGroup("/item-groups", itemGroupApi)).execute();
     }
 
