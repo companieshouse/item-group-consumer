@@ -34,6 +34,20 @@ public class Constants {
       .setLinks(new OrderLinks("/orders/ORD-710716-964943"))
       .build();
 
+  public static ItemGroupOrdered createItemGroupOrdered(){
+    return ItemGroupOrdered.newBuilder()
+            .setOrderId("ORD-710716-964943")
+            .setOrderedAt("2023-10-05T09:25:38.742")
+            .setOrderedBy(new OrderedBy("someone@companieshouse.gov.uk", "eELukBtEOUfpWKQMSOLdRzDBxxx"))
+            .setPaymentReference("johWoBDER4zfd9H")
+            .setReference("ORD-710716-964943")
+            .setTotalOrderCost("30")
+            .setItems(createItems())
+            .setDeliveryDetails(createDeliveryDetails())
+            .setLinks(new OrderLinks("/orders/ORD-710716-964943"))
+            .build();
+  }
+
   private static DeliveryDetails createDeliveryDetails(){
     return DeliveryDetails.newBuilder()
             .setAddressLine1("123 street")
