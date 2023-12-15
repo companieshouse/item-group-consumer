@@ -26,7 +26,7 @@ public class ItemGroupRequest {
     }
 
     public void sendItemGroup(ItemGroupApi itemGroupWorkflowApi) throws ApiErrorResponseException {
-        ApiResponse<Void> response = apiClientService
+        apiClientService
                 .getInternalApiClient()
                 .privateItemGroupResourceHandler()
                 .postItemGroup(itemGroupURI, itemGroupWorkflowApi)
