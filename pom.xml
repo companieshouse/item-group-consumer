@@ -19,10 +19,12 @@
         <environment-reader-library.version>1.3.10</environment-reader-library.version>
         <test-containers.version>1.18.1</test-containers.version>
         <junit.version>5.9.1</junit.version>
-        <kafka-models.version>1.0.36</kafka-models.version>
+        <kafka-models.version>1.0.38</kafka-models.version>
         <ch-kafka.version>1.4.8</ch-kafka.version>
         <mockito.version>4.8.0</mockito.version>
         <structured-logging.version>1.9.25</structured-logging.version>
+        <private-api-sdk-java.version>2.0.332</private-api-sdk-java.version>
+        <api-sdk-manager-java-library.version>1.0.6</api-sdk-manager-java-library.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <start-class>uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication</start-class>
@@ -127,7 +129,16 @@
             <artifactId>aspectjtools</artifactId>
             <groupId>org.aspectj</groupId>
         </dependency>
-
+        <dependency>
+            <groupId>uk.gov.companieshouse</groupId>
+            <artifactId>private-api-sdk-java</artifactId>
+            <version>${private-api-sdk-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.gov.companieshouse</groupId>
+            <artifactId>api-sdk-manager-java-library</artifactId>
+            <version>${api-sdk-manager-java-library.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

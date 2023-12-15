@@ -43,6 +43,7 @@ class ItemGroupOrderedInTiltProducer {
     @SuppressWarnings("squid:S2699") // at least one assertion
     @Test
     void produceMessageToTilt() throws InterruptedException, ExecutionException, TimeoutException {
+        //NOTE: ITEM_GROUP_ORDERED order will have conflicting db records after one run
         final var future = testProducer.send(new ProducerRecord<>(
             itemGroupOrderedTopic, 0, System.currentTimeMillis(), "key", ITEM_GROUP_ORDERED));
         final var result = future.get(MESSAGE_WAIT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
