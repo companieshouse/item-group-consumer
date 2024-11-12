@@ -61,7 +61,7 @@ class ItemGroupMessageMapperTest {
         assertEquals(resultItem.getDescriptionIdentifier(), expectedItem.getDescriptionIdentifier());
 
         assertThat(resultItem.getLinks(), samePropertyValuesAs(expectedItem.getLinks()));
-        assertThat(resultItem.getItemCosts(), samePropertyValuesAs(expectedItem.getItemCosts()));
+        assertThat(resultItem.getItemCosts().getFirst(), samePropertyValuesAs(expectedItem.getItemCosts().getFirst()));
         assertThat(resultItem.getDescriptionValues(), samePropertyValuesAs(expectedItem.getDescriptionValues()));
         assertThat(resultItem.getItemOptions(), samePropertyValuesAs(expectedItem.getItemOptions()));
     }
