@@ -11,8 +11,8 @@ import uk.gov.companieshouse.logging.util.DataMap;
 import java.util.Map;
 
 /**
- * Service that propagates the contents of the recieved item-group-ordered kafka message
- * and then send that via a HTTP request to item-group-workflow-api
+ * Service that propagates the contents of the received item-group-ordered kafka message
+ * and then send that via an HTTP request to item-group-workflow-api
  */
 @Service
 public class ItemGroupRequest {

@@ -1,6 +1,6 @@
 package uk.gov.companieshouse.itemgroupconsumer;
 
-import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.NAMESPACE;
+import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.APPLICATION_NAME_SPACE;
 
 import uk.gov.companieshouse.environment.EnvironmentReader;
 import uk.gov.companieshouse.environment.exception.EnvironmentVariableException;
@@ -10,7 +10,7 @@ import uk.gov.companieshouse.logging.LoggerFactory;
 
 public class EnvironmentVariablesChecker {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NAMESPACE);
+    private static final Logger LOGGER = LoggerFactory.getLogger(APPLICATION_NAME_SPACE);
 
     public enum RequiredEnvironmentVariables {
         BACKOFF_DELAY("BACKOFF_DELAY"),

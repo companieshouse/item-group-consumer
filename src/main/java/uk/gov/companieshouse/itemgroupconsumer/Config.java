@@ -1,6 +1,6 @@
 package uk.gov.companieshouse.itemgroupconsumer;
 
-import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.NAMESPACE;
+import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.APPLICATION_NAME_SPACE;
 
 import consumer.deserialization.AvroDeserializer;
 import java.util.Map;
@@ -63,7 +63,8 @@ public class Config {
                         ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
                         ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, InvalidMessageRouter.class.getName(),
                         "message.flags", messageFlags,
-                        "invalid.message.topic", invalidMessageTopic),
+                        "invalid.message.topic", invalidMessageTopic,
+                        "enable.idempotence", false),
                 new StringSerializer(),
                 (topic, data) -> {
                     try {
@@ -102,7 +103,7 @@ public class Config {
 
     @Bean
     Logger getLogger(){
-        return LoggerFactory.getLogger(NAMESPACE);
+        return LoggerFactory.getLogger(APPLICATION_NAME_SPACE);
     }
 }
 

@@ -44,8 +44,8 @@ class ItemGroupMessageMapperTest {
         assertThat(actualItemGroupApi.getLinks(), samePropertyValuesAs(expectedItemGroupApi.getLinks()));
 
         //due to item having multiple nested objects, check the content manually
-        ItemApi resultItem = actualItemGroupApi.getItems().get(0);
-        ItemApi expectedItem = expectedItemGroupApi.getItems().get(0);
+        ItemApi resultItem = actualItemGroupApi.getItems().getFirst();
+        ItemApi expectedItem = expectedItemGroupApi.getItems().getFirst();
 
         assertEquals(resultItem.getId(), expectedItem.getId());
         assertEquals(resultItem.getCompanyNumber(), expectedItem.getCompanyNumber());
@@ -103,22 +103,22 @@ class ItemGroupMessageMapperTest {
     public void testCreatePayloadNullItemCosts() {
         //given ItemCosts from ItemGroupOrdered are null, check the application handles the null correctly
         ItemGroupOrdered itemGroupOrdered = createItemGroupOrdered();
-        itemGroupOrdered.getItems().get(0).setItemCosts(null);
+        itemGroupOrdered.getItems().getFirst().setItemCosts(null);
 
         ItemGroupApi actualItemGroupApi = ItemGroupMessageMapper.createPayload(itemGroupOrdered);
 
-        assertNull(actualItemGroupApi.getItems().get(0).getItemCosts());
+        assertNull(actualItemGroupApi.getItems().getFirst().getItemCosts());
     }
 
     @Test
     public void testCreatePayloadNullItemLinks() {
         //given ItemLinks from ItemGroupOrdered are null, check the application handles the null correctly
         ItemGroupOrdered itemGroupOrdered = createItemGroupOrdered();
-        itemGroupOrdered.getItems().get(0).setLinks(null);
+        itemGroupOrdered.getItems().getFirst().setLinks(null);
 
         ItemGroupApi actualItemGroupApi = ItemGroupMessageMapper.createPayload(itemGroupOrdered);
 
-        assertNull(actualItemGroupApi.getItems().get(0).getLinks());
+        assertNull(actualItemGroupApi.getItems().getFirst().getLinks());
     }
 
     @Test
@@ -131,12 +131,12 @@ class ItemGroupMessageMapperTest {
 
         itemOptions.put("filing_history_documents", filingHistoryDocumentsValue);
 
-        itemGroupOrdered.getItems().get(0).setItemOptions(itemOptions);
+        itemGroupOrdered.getItems().getFirst().setItemOptions(itemOptions);
 
         ItemGroupApi actualItemGroupApi = ItemGroupMessageMapper.createPayload(itemGroupOrdered);
 
         // Verify that the original value is passed along in the catch block
-        assertEquals(filingHistoryDocumentsValue, actualItemGroupApi.getItems().get(0).getItemOptions().get("filing_history_documents"));
+        assertEquals(filingHistoryDocumentsValue, actualItemGroupApi.getItems().getFirst().getItemOptions().get("filing_history_documents"));
 
     }
 }

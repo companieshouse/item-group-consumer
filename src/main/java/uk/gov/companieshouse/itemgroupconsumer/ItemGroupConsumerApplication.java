@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ItemGroupConsumerApplication {
 
-    public static final String NAMESPACE = "item-group-consumer";
+    public static final String APPLICATION_NAME_SPACE = "item-group-consumer";
 
     public static void main(String[] args) {
         if (allRequiredEnvironmentVariablesPresent()) {

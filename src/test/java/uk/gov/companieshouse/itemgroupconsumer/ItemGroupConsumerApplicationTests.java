@@ -6,9 +6,11 @@ import static org.mockito.Mockito.times;
 import static uk.gov.companieshouse.itemgroupconsumer.EnvironmentVariablesChecker.RequiredEnvironmentVariables.BACKOFF_DELAY;
 
 import java.util.Arrays;
-import org.junit.Rule;
+import java.util.Objects;
+
 import org.junit.contrib.java.lang.system.EnvironmentVariables;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.SpringApplication;
@@ -25,18 +27,16 @@ class ItemGroupConsumerApplicationTests {
 
     private static final String TOKEN_STRING_VALUE = "token value";
 
-    @Rule
-    private static final EnvironmentVariables ENVIRONMENT_VARIABLES;
+    private static EnvironmentVariables ENVIRONMENT_VARIABLES;
 
-    static {
+    @BeforeAll
+    static void setUp() {
         ENVIRONMENT_VARIABLES = new EnvironmentVariables();
         stream(EnvironmentVariablesChecker.RequiredEnvironmentVariables.values()).forEach(variable -> {
-            switch (variable) {
-                case SERVER_PORT:
-                    ENVIRONMENT_VARIABLES.set(variable.getName(), "8080");
-                    break;
-                default:
-                    ENVIRONMENT_VARIABLES.set(variable.getName(), TOKEN_STRING_VALUE);
+            if (Objects.requireNonNull(variable) == EnvironmentVariablesChecker.RequiredEnvironmentVariables.SERVER_PORT) {
+                ENVIRONMENT_VARIABLES.set(variable.getName(), "8080");
+            } else {
+                ENVIRONMENT_VARIABLES.set(variable.getName(), TOKEN_STRING_VALUE);
             }
         });
     }

@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.NAMESPACE;
+import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.APPLICATION_NAME_SPACE;
 
 /**
  * Maps Avro schema object (ItemGroupOrdered) into an ItemGroupApi to be used in a request to create a new
@@ -33,7 +33,7 @@ import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplicati
  */
 public class ItemGroupMessageMapper {
 
-    private static final Logger logger = LoggerFactory.getLogger(NAMESPACE);
+    private static final Logger logger = LoggerFactory.getLogger(APPLICATION_NAME_SPACE);
 
     public static ItemGroupApi createPayload(ItemGroupOrdered itemGroupOrdered){
         ItemGroupApi itemGroupApi = new ItemGroupApi();
@@ -119,7 +119,7 @@ public class ItemGroupMessageMapper {
             return null;
 
         //Presume that there is one item is the item costs list.
-        ItemCosts itemCost = itemCosts.get(0);
+        ItemCosts itemCost = itemCosts.getFirst();
         ItemCostsApi itemCostsApi = new ItemCostsApi();
         itemCostsApi.setCalculatedCost(itemCost.getCalculatedCost());
         itemCostsApi.setDiscountApplied(itemCost.getDiscountApplied());

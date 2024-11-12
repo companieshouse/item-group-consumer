@@ -30,7 +30,7 @@ class ItemGroupWorkflowService implements Service {
     public void processMessage(ServiceParameters parameters) {
         final var message = parameters.getData();
         final var orderId = message.getOrderId();
-        final var itemId = message.getItems().get(0).getId();
+        final var itemId = message.getItems().getFirst().getId();
 
         logger.info("Processing message " + message + " for order ID " + orderId +
                 ", item ID " + itemId + ".", getLogMap(orderId, itemId));
