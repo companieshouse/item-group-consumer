@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import static uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication.APPLICATION_NAME_SPACE;
+import static uk.gov.companieshouse.itemgroupconsumer.EnumValueNameConverter.convertEnumValueNameToJson;
 
 /**
  * Maps Avro schema object (ItemGroupOrdered) into an ItemGroupApi to be used in a request to create a new
@@ -124,7 +125,7 @@ public class ItemGroupMessageMapper {
         itemCostsApi.setCalculatedCost(itemCost.getCalculatedCost());
         itemCostsApi.setDiscountApplied(itemCost.getDiscountApplied());
         itemCostsApi.setItemCost(itemCost.getItemCost());
-        itemCostsApi.setProductType(itemCost.getProductType());
+        itemCostsApi.setProductType(convertEnumValueNameToJson(itemCost.getProductType()));
 
         return Collections.singletonList(itemCostsApi);
     }
