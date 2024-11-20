@@ -5,11 +5,8 @@ locals {
   global_prefix               = "global-${var.environment}"
   service_name                = "item-group-consumer"
   container_port              = "8080"
-  eric_port                   = "10000"
   docker_repo                 = "item-group-consumer"
   kms_alias                   = "alias/${var.aws_profile}/environment-services-kms"
-  lb_listener_rule_priority   = 29
-  lb_listener_paths           = ["/item-group-consumer"]
   healthcheck_path            = "/item-group-consumer/healthcheck" #healthcheck path for item-group-consumer
   healthcheck_matcher         = "200"
   vpc_name                    = local.stack_secrets["vpc_name"]
@@ -66,12 +63,5 @@ locals {
   task_environment = concat(local.ssm_global_version_map,local.ssm_service_version_map,[
     { "name" : "PORT", "value" : local.container_port }
   ])
-
-  # get eric secrets from global secrets map
-  eric_secrets = [
-    { "name": "API_KEY", "valueFrom": local.global_secrets_arn_map.eric_api_key },
-    { "name": "AES256_KEY", "valueFrom": local.global_secrets_arn_map.eric_aes256_key }
-  ]
-  eric_environment_filename = "eric.env"
 
   }
