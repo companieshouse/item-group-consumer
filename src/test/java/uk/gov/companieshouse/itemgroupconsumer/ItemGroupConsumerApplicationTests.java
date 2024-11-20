@@ -3,7 +3,7 @@ package uk.gov.companieshouse.itemgroupconsumer;
 import static java.util.Arrays.stream;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.times;
-import static uk.gov.companieshouse.itemgroupconsumer.EnvironmentVariablesChecker.RequiredEnvironmentVariables.BACKOFF_DELAY;
+import static uk.gov.companieshouse.itemgroupconsumer.environment.EnvironmentVariablesChecker.RequiredEnvironmentVariables.BACKOFF_DELAY;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -18,6 +18,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
+import uk.gov.companieshouse.itemgroupconsumer.config.TestConfig;
+import uk.gov.companieshouse.itemgroupconsumer.environment.EnvironmentVariablesChecker;
 
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test_main_positive.properties")
