@@ -59,9 +59,6 @@ module "ecs-service" {
   fargate_subnets                    = local.application_subnet_ids
   read_only_root_filesystem          = false
 
-  # Cloudwatch
-  cloudwatch_alarms_enabled = var.cloudwatch_alarms_enabled
-
   # Service environment variable and secret configs
   task_environment            = local.task_environment
   task_secrets                = local.task_secrets
