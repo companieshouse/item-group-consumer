@@ -25,7 +25,7 @@ public class ItemGroupRequestTest {
     @Mock
     private Logger logger;
     @Mock
-    private ApiClientService apiClientService;
+    private ApiClientServiceImpl apiClientService;
     @Mock
     private InternalApiClient internalApiClient;
     @Mock

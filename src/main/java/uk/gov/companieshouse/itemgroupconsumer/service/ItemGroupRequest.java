@@ -3,7 +3,6 @@ package uk.gov.companieshouse.itemgroupconsumer.service;
 import org.springframework.stereotype.Service;
 import uk.gov.companieshouse.api.error.ApiErrorResponseException;
 import uk.gov.companieshouse.api.model.itemgroup.ItemGroupApi;
-import uk.gov.companieshouse.itemgroupconsumer.service.ApiClientService;
 import uk.gov.companieshouse.logging.Logger;
 
 /**
@@ -13,10 +12,10 @@ import uk.gov.companieshouse.logging.Logger;
 @Service
 public class ItemGroupRequest {
     private final Logger logger;
-    private final ApiClientService apiClientService;
+    private final ApiClientServiceImpl apiClientService;
     public static final String itemGroupURI = "/item-groups";
 
-    public ItemGroupRequest(ApiClientService apiClientService, Logger logger){
+    public ItemGroupRequest(ApiClientServiceImpl apiClientService, Logger logger){
         this.logger = logger;
         this.apiClientService = apiClientService;
     }
