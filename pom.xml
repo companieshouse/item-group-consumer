@@ -6,7 +6,7 @@
     <parent>
         <groupId>uk.gov.companieshouse</groupId>
         <artifactId>companies-house-parent</artifactId>
-        <version>2.1.7</version>
+        <version>2.1.9</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -21,7 +21,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
 
-        <spring-boot-dependencies.version>3.3.5</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.4.0</spring-boot-dependencies.version>
         <cucumber-bom.version>7.20.1</cucumber-bom.version>
         <environment-reader-library.version>3.0.1</environment-reader-library.version>
         <testcontainers-bom.version>1.20.3</testcontainers-bom.version>
@@ -37,7 +37,7 @@
 
         <start-class>uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication</start-class>
 
-        <spring-boot-maven-plugin.version>3.3.5</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>3.4.0</spring-boot-maven-plugin.version>
         <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.5.2</maven-failsafe-plugin.version>
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
