@@ -97,7 +97,14 @@ variable "service_scaleup_schedule" {
 
   default = ""
 }
-
+# ----------------------------------------------------------------------
+# Cloudwatch alerts
+# ----------------------------------------------------------------------
+variable "cloudwatch_alarms_enabled" {
+  description = "Whether to create a standard set of cloudwatch alarms for the service.  Requires an SNS topic to have already been created for the stack."
+  type        = bool
+  default     = true
+}
 # ------------------------------------------------------------------------------
 # Service environment variable configs
 # ------------------------------------------------------------------------------
@@ -113,7 +120,7 @@ variable "use_set_environment_files" {
   description = "Toggle default global and shared  environment files"
 }
 
-variable "item_group_group_consumer_version" {
+variable "item_group_consumer_version" {
   type        = string
   description = "The version of the item-group-consumer container to run."
 }
