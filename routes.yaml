@@ -1,5 +1,0 @@
-app_name: item-group-consumer
-group: internalapi
-weight: 911
-routes:
-  1: ^/item-group-consumer/healthcheck
