@@ -23,15 +23,15 @@
 
         <spring-boot-dependencies.version>3.5.3</spring-boot-dependencies.version>
         <cucumber-bom.version>7.23.0</cucumber-bom.version>
-        <environment-reader-library.version>3.0.1</environment-reader-library.version>
+        <environment-reader-library.version>3.0.2</environment-reader-library.version>
         <testcontainers-bom.version>1.21.2</testcontainers-bom.version>
         <junit-bom.version>6.0.0-M1</junit-bom.version>
         <kafka-models.version>3.0.18</kafka-models.version>
-        <ch-kafka.version>3.0.3</ch-kafka.version>
+        <ch-kafka.version>3.0.4</ch-kafka.version>
         <mockito-bom.version>5.18.0</mockito-bom.version>
-        <structured-logging.version>3.0.32</structured-logging.version>
+        <structured-logging.version>3.0.37</structured-logging.version>
         <private-api-sdk-java.version>4.0.316</private-api-sdk-java.version>
-        <api-sdk-manager-java-library.version>3.0.7</api-sdk-manager-java-library.version>
+        <api-sdk-manager-java-library.version>3.0.9</api-sdk-manager-java-library.version>
         <avro.version>1.12.0</avro.version>
         <hamcrest.version>3.0</hamcrest.version>
 
@@ -43,6 +43,8 @@
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <opentelemetry-instrumentation-bom.version>2.16.0</opentelemetry-instrumentation-bom.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
+
 
         <!-- system-rules: 1.17.2 is the latest version that works with JUnit 5.
             See https://github.com/stefanbirkner/system-rules/issues/70 -->
@@ -108,6 +110,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.2.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-context</artifactId>
+            <version>1.73.0</version>
         </dependency>
 
         <dependency>
