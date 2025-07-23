@@ -1,6 +1,6 @@
 package uk.gov.companieshouse.itemgroupconsumer.logging;
 
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import uk.gov.companieshouse.logging.Logger;
 
 import java.util.HashMap;
