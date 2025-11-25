@@ -21,7 +21,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
 
-        <spring-boot-dependencies.version>3.5.3</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.5.7</spring-boot-dependencies.version>
         <cucumber-bom.version>7.23.0</cucumber-bom.version>
         <environment-reader-library.version>3.0.2</environment-reader-library.version>
         <testcontainers-bom.version>1.21.2</testcontainers-bom.version>
@@ -37,7 +37,7 @@
 
         <start-class>uk.gov.companieshouse.itemgroupconsumer.ItemGroupConsumerApplication</start-class>
 
-        <spring-boot-maven-plugin.version>3.5.3</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>3.5.7</spring-boot-maven-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
